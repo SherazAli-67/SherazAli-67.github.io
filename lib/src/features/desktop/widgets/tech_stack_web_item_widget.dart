@@ -2,23 +2,20 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/src/models/tech_stack_model.dart';
 
-class SocialIcon extends StatefulWidget {
-  final String icon;
-  final Color color;
-  final String text;
-  const SocialIcon({
+class TechStackWebItemWidget extends StatefulWidget {
+  final TechStackModel techStack;
+  const TechStackWebItemWidget({
     super.key,
-    required this.icon,
-    required this.color,
-    required this.text,
+    required this.techStack
   });
 
   @override
-  State<SocialIcon> createState() => _SocialIconState();
+  State<TechStackWebItemWidget> createState() => _TechStackWebItemWidgetState();
 }
 
-class _SocialIconState extends State<SocialIcon> {
+class _TechStackWebItemWidgetState extends State<TechStackWebItemWidget> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +52,7 @@ class _SocialIconState extends State<SocialIcon> {
                       child: Container(
                         height: 10,
                         width: 10,
-                        color: widget.color,
+                        color: widget.techStack.color,
                       ),
                     ),
                   ),
@@ -65,11 +62,11 @@ class _SocialIconState extends State<SocialIcon> {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: widget.color,
+                      color: widget.techStack.color,
                     ),
                     child: Center(
                       child: Text(
-                        widget.text,
+                        widget.techStack.title,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -102,12 +99,12 @@ class _SocialIconState extends State<SocialIcon> {
                 height: 60,
                 width: 60,
                 duration: const Duration(milliseconds: 350),
-                /*decoration: BoxDecoration(
-                  color: isHover ? widget.color : Colors.white,
+                decoration: BoxDecoration(
+                  color: isHover ? widget.techStack.color.withOpacity(0.2) : Colors.white,
                   borderRadius: BorderRadius.circular(50),
-                ),*/
+                ),
                 child: SvgPicture.asset(
-                  widget.icon,
+                  widget.techStack.icon,
                   // color: isHover ? Colors.white : widget.color,
                 ),
               ),
