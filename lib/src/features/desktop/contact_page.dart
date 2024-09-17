@@ -10,12 +10,13 @@ import 'package:portfolio/src/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class ContactPageWeb extends StatelessWidget{
-  const ContactPageWeb({super.key});
-
+  const ContactPageWeb({super.key, this.isMobile = false});
+  final bool isMobile;
   @override
   Widget build(BuildContext context) {
     bool isDarkTheme = Provider.of<ThemeProvider>(context).themeData == darkTheme;
     Color cardColor = isDarkTheme ? Colors.black : Colors.white;
+    TextStyle textStyle = isMobile ? TextStyle(fontSize: 16, fontWeight: FontWeight.w600) : subHeadingStyleWeb;
     return Card(
       margin: EdgeInsets.zero,
       color: cardColor,
@@ -23,7 +24,7 @@ class ContactPageWeb extends StatelessWidget{
         borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding:  const EdgeInsets.all(20.0),
         child: Column(
           children: [
             Container(
@@ -35,7 +36,7 @@ class ContactPageWeb extends StatelessWidget{
               child: const Text("Get in touch", style: TextStyle(fontSize: 14,), ),
             ),
             const SizedBox(height: 20,),
-            Text('What’s next? Feel free to reach out to me if you\'re looking for a developer, have a query, or simply want to connect.', style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat'),),
+            Text('What’s next? Feel free to reach out to me if you\'re looking for a developer, have a query, or simply want to connect.', textAlign: TextAlign.center, style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat'),),
             const SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +44,7 @@ class ContactPageWeb extends StatelessWidget{
               children: [
                 SvgPicture.asset(icMail, color: Colors.grey, height: 20,),
                 const SizedBox(width: 10,),
-                const Text(myEmail, style: subHeadingStyleWeb,),
+                Text(myEmail, style: textStyle,),
                 const SizedBox(width: 10,),
                IconButton(onPressed: ()async{
                  await Clipboard.setData(const ClipboardData(text: myEmail));
@@ -58,7 +59,7 @@ class ContactPageWeb extends StatelessWidget{
               children: [
                 SvgPicture.asset(icContactPhone, color: Colors.grey, height: 20,),
                 const SizedBox(width: 10,),
-                const Text(myContactNum, style: subHeadingStyleWeb,),
+                 Text(myContactNum, style: textStyle,),
                 const SizedBox(width: 10,),
                 IconButton(onPressed: ()async{
                   await Clipboard.setData(const ClipboardData(text: myContactNum));

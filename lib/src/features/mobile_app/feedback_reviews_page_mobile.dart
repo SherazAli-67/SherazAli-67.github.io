@@ -3,38 +3,41 @@ import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/data/feedback_reviews.dart';
 import 'package:provider/provider.dart';
-
 import '../../provider/theme_provider.dart';
 import '../../themes_styles/style_constant.dart';
 import '../../themes_styles/theme.dart';
-class FeedbackAndReviewsPageWeb extends StatelessWidget{
-  const FeedbackAndReviewsPageWeb({super.key});
+
+class FeedbackAndReviewsPageMobile extends StatelessWidget{
+  const FeedbackAndReviewsPageMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     bool isDarkTheme = Provider.of<ThemeProvider>(context).themeData == darkTheme;
     Color cardColor = isDarkTheme ? Colors.black : Colors.white;
     return Column(
       children: [
         const Text("Feedback & Reviews", style: headingStyleWeb,),
-        const Text("Words of appreciation from those I’ve had the pleasure to work with", style: TextStyle(fontSize: 19, fontFamily: 'Montserrat'),),
+        const Padding(
+          padding: EdgeInsets.
+        symmetric(horizontal: 8.0),
+          child: Text("Words of appreciation from those I’ve had the pleasure to work with",textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),
+        ),
         const SizedBox(height: 20,),
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            height: size.height*0.4,
             aspectRatio: 1.5,
-            viewportFraction: 0.6,
+            viewportFraction: 0.85,
             enlargeCenterPage: true,
-            enlargeFactor: 0.5,
+            enlargeFactor: 0.3,
           ),
           items: feedbackReviews.map((feedback) {
             return Card(
                 color: cardColor,
                 elevation: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 25.0, left: 25, right: 25),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 25.0, horizontal: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

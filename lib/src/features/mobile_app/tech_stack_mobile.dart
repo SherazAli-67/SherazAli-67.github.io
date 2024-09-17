@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import '../../data/portfolio_data.dart';
 import '../../models/tech_stack_model.dart';
 import '../../themes_styles/style_constant.dart';
-import 'widgets/tech_stack_web_item_widget.dart';
+import '../desktop/widgets/tech_stack_web_item_widget.dart';
 
-class TechStackWebTablet extends StatelessWidget{
-  const TechStackWebTablet({super.key, required this.childAspectRatio});
+class TechStackMobile extends StatelessWidget{
+  const TechStackMobile({super.key, required this.childAspectRatio});
   final double childAspectRatio;
   @override
   Widget build(BuildContext context) {
@@ -17,18 +17,19 @@ class TechStackWebTablet extends StatelessWidget{
            mainAxisAlignment: MainAxisAlignment.center,
            crossAxisAlignment: CrossAxisAlignment.center,
            children: [
-             Text("My Tech Stack", style: headingStyleWeb,),
-             Text("Technologies I’ve been working with recently", style: TextStyle(fontSize: 19, fontFamily: 'Montserrat'),)
+             Text("My Tech Stack", style: subHeadingStyleWeb,),
+             Text("Technologies I’ve been working with recently", textAlign: TextAlign.center,style: TextStyle(fontSize: 16, fontFamily: 'Montserrat'),)
            ],
          ),
        ),
        const SizedBox(height: 20,),
        SizedBox(
-         height: 300,
+         height: 500,
          child: GridView.builder(
+           physics: const ScrollPhysics(parent: NeverScrollableScrollPhysics()),
              itemCount: PortfolioData.techStackList.length,
               gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5, childAspectRatio: childAspectRatio),
+                  crossAxisCount: 3, childAspectRatio: childAspectRatio),
               itemBuilder: (ctx, index) {
                TechStackModel techStack = PortfolioData.techStackList[index];
                return TechStackWebItemWidget(techStack: techStack,);

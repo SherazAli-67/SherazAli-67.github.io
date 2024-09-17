@@ -6,8 +6,8 @@ import '../../themes_styles/style_constant.dart';
 import '../../themes_styles/theme.dart';
 
 class ExperiencePageWeb extends StatelessWidget{
-  const ExperiencePageWeb({super.key});
-
+  const ExperiencePageWeb({super.key, this.isTablet = false});
+  final bool isTablet;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -18,6 +18,7 @@ class ExperiencePageWeb extends StatelessWidget{
       children: [
         const Text("Experience", style: headingStyleWeb,),
         const Text("Here is a quick summary of my most recent experiences:", style: TextStyle(fontSize: 19, fontFamily: 'Montserrat'),),
+        const SizedBox(height: 10,),
         Column(
           children: Experiences.getMyExperiences(textSpanColor: textSpanColor).map((experience){
             return Card(
@@ -39,6 +40,9 @@ class ExperiencePageWeb extends StatelessWidget{
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(experience.title, style: subHeadingStyleWeb,),
+                                  if(isTablet)
+                                  Text(experience.duration, style: regularTextStyleWeb,),
+
                                   const SizedBox(height: 10,),
                                   Column(
                                       children: experience.keyResponsibilities.map((accomplishment){
@@ -61,8 +65,14 @@ class ExperiencePageWeb extends StatelessWidget{
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 20,),
-                            Text(experience.duration, style: regularTextStyleWeb,)
+                            if(!isTablet)
+                              Column(
+                                children: [
+
+                                  const SizedBox(width: 20,),
+                                  Text(experience.duration, style: regularTextStyleWeb,)
+                                ],
+                              )
                           ],
                         ))
 

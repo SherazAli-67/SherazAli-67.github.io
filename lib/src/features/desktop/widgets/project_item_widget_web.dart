@@ -40,7 +40,7 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
                   children: [
                     Text(widget.project.title, style: headingStyleWeb,),
                     const SizedBox(height: 5,),
-                    Text(widget.project.description, style: TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),
+                    Text(widget.project.description, style: const TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),
 
                     const SizedBox(height: 10,),
                     const Text("Tech Stack", style: subHeadingStyleWeb,),

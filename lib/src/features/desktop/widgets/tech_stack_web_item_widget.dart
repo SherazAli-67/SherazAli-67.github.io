@@ -68,9 +68,9 @@ class _TechStackWebItemWidgetState extends State<TechStackWebItemWidget> {
                       child: Text(
                         widget.techStack.title,
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 14,
                           color: Colors.white,
+                          fontFamily: 'Montserrat'
                         ),
                       ),
                     ),

@@ -9,7 +9,8 @@ import '../widgets/primary_btn.dart';
 
 class AboutMeWeb extends StatelessWidget{
   final Color textSpanColor;
-  const AboutMeWeb({super.key, required this.textSpanColor});
+  final bool isMobile;
+  const AboutMeWeb({super.key, required this.textSpanColor, this.isMobile= false});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,7 +64,7 @@ class AboutMeWeb extends StatelessWidget{
         const SizedBox(height: 10,),
         Padding(
           padding: const EdgeInsets.only(right: 100,),
-          child: Text(aboutMe, textAlign: TextAlign.justify, style: regularTextStyleWeb.copyWith(height: 1.5),),
+          child: Text(aboutMe, textAlign: isMobile ? TextAlign.start : TextAlign.justify, style: regularTextStyleWeb.copyWith(height: 1.5),),
         ),
       ],
     );

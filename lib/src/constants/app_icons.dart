@@ -19,7 +19,7 @@ const icCopy ='assets/icons/ic_copy.svg';
 const icLinkToGithub = 'assets/icons/ic_github.svg';
 const icLinkToTwitter = 'assets/icons/ic_twitter.svg';
 const icLinkToLinkedIn = 'assets/icons/ic_linkedIn.svg';
-
+const icDeveloperMe = 'assets/icons/developer_me.png';
 //tech stack icons
 const icFlutter ='assets/tech_stack_icons/ic_flutter.svg';
 const icDart = 'assets/tech_stack_icons/ic_dart.svg';
