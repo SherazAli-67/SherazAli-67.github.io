@@ -22,13 +22,14 @@ const codeOfCivilProcedureDescription = '''The "Code of Civil Procedure 1908 (CP
 Key features include offline access, advanced search, text-to-speech, the ability to add and share notes, and options to resize text or save sections as PDFs. This user-friendly app is ideal for legal professionals, students, and anyone interested in Indian law, offering an accessible and regularly updated digital version of the Code of Civil Procedure. ''';
 
 const customTeesDescription = 'PRINT-ON-DEMAND Custom T-Shirt is an android application that allows users to design personalized T-shirts with ease. The app offers a comprehensive set of customization tools, including options to change the T-shirt color, add text with any font and size, and incorporate logos, images, and stickers into the design. Once the user finalizes their design, they can specify the size and quantity of the T-shirts and place an order directly through the app. This application is ideal for anyone looking to create custom apparel for personal use, events, or as unique gifts.';
+const hitchDescription = 'Hitch is a new way for pickleball and tennis players to connect with other players nearby at their level. Swipe through player cards to find your match, then send and receive "Hitch" requests to message other players and find courts - let’s play!';
+const arabVetDescription = ''' The Arab Vet app is a dedicated platform for Arabic-speaking pet owners, offering easy access to online veterinary consultations. Users can connect with certified veterinarians through text or video chats for expert advice on their pets' health. The app features personalized pet profiles, health monitoring, customized recommendations, and a record of previous consultations for easy reference. With a user-friendly interface, Arab Vet makes it simple to manage your pets' well-being from the comfort of your home, anytime and anywhere. ''';
 
-
-const tobuildExperienceDescription = 'I am currently serving as the Lead Flutter mobile app developer at Tobuild LLC, where I\'ve successfully developed multiple applications, including one of them is published on the App Store. ';
+const tobuildExperienceDescription = 'I am currently serving as the Lead Flutter mobile app developer at Tobuild LLC, where I\'ve successfully developed multiple applications, and launched Hitch Player Finder and Markets AI';
 const freelanceExperienceDescription = 'I began my freelancing career in 2020 on Fiverr and Upwork, initially focusing on developing native Android applications. Over time, I expanded my expertise to include cross-platform application development and transitioned my services accordingly. I have successfully developed and published several Flutter framework applications, including "Konushan-Language Exchange" and "HappyLife: Book Summaries." available on App store and Play store.';
 const myEmail = 'soomrosheraz054@gmail.com';
 const myContactNum = '+92 307 2215 500';
-const myResumeLink = 'https://drive.google.com/file/d/127ho6B5mNsZGxocxdi3prUnQX0_xjuUl/view?usp=sharing';
+const myResumeLink = 'https://drive.google.com/file/d/1--Dw5DlBCbVna4Rv9-emFEcKYZol_b-H/view?usp=sharing';
 const myGitHubLink ='https://github.com/SherazAli-67';
 const myLinkedInLink = 'https://www.linkedin.com/in/sherazalisoomro/';
 const myTwitterLink = 'https://x.com/SherazNazir7';

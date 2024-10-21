@@ -38,7 +38,7 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.project.title, style: headingStyleWeb,),
+                    Text(widget.project.title, style: widget.project.isArabicText ? headingStyleWeb.copyWith(fontFamily: 'NotoNaskhArabic') : headingStyleWeb,),
                     const SizedBox(height: 5,),
                     Text(widget.project.description, style: const TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),
 

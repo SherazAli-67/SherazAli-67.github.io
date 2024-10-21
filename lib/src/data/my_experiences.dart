@@ -10,7 +10,7 @@ class Experiences {
         TextSpan(
             children: [
               TextSpan(
-                text: "Developed and Published ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
+                text: "Developed and Launched ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
               ),
               TextSpan(
                 text: "Markets AI ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat', fontWeight: FontWeight.w600,  color: textSpanColor),
@@ -24,18 +24,32 @@ class Experiences {
         TextSpan(
             children: [
               TextSpan(
-                text: "Developing ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
+                text: "Developed and Launched ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
               ),
               TextSpan(
                 text: "Hitches - Player finder App ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat', fontWeight: FontWeight.w600,  color: textSpanColor),
               ),
               TextSpan(
-                text: "that connects users with tennis and pickleball players, helps them find nearby courts, and offers options to find or become a coach for lessons. Users can also contact others to arrange games.", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
+                text: " connecting users with tennis and pickleball players, while helping them discover nearby courts. The app also provides options to find or offer coaching services, and facilitates communication to arrange games.", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
               ),
             ]
         ),
       ], companyIcon: icTobuildLLCIcon, duration: 'May 2024 - Present'),
       ExperienceModel(title: "Freelancing", keyResponsibilities: [
+        TextSpan(
+            children: [
+              TextSpan(
+                text: "Developed and Launched ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
+              ),
+              TextSpan(
+                text: "ArabVet - البيطري العربي ", style: regularTextStyleWeb.copyWith(fontFamily: 'NotoNaskhArabic', fontWeight: FontWeight.w600,  color: textSpanColor),
+              ),
+              TextSpan(
+                text: " the first Arabic veterinary consultation app, enabling pet owners to connect with veterinarians via video and text chats,with in-app purchases and push notifications.", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor),
+              ),
+            ]
+        ),
+
         TextSpan(
             children: [
               TextSpan(

@@ -51,7 +51,9 @@ class AboutMeWeb extends StatelessWidget{
           height: 45,
           child: Row(
             children: [
-              PrimaryBtn(btnText: "Hire me", onTap: (){}),
+              PrimaryBtn(btnText: "Hire me", onTap: (){
+                Utils.launchEmail();
+              }),
               const SizedBox(width: 10,),
               ElevatedButton(onPressed: (){
                 Utils.portfolioLaunchUrl(myResumeLink);

@@ -39,6 +39,8 @@ const konushanCoverPage = 'assets/projects/konushan.png';
 const marketsAICoverPage = 'assets/projects/markets_ai.png';
 const codeOfCivilProcedureCoverPage = 'assets/projects/code_of_civil_procedure.png';
 const customTeesCoverPage = 'assets/projects/custom_tees.png';
+const hitchPlayerFinderCoverPage = 'assets/projects/hitch_player_finder.png';
+const arabVetCoverPage = 'assets/projects/arab_vet.png';
 
 const icFreelanceExperienceIcon = 'assets/icons/fiverr_upwork.png';
 const icTobuildLLCIcon ='assets/icons/tobuildLLC.jpeg';

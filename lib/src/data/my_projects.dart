@@ -4,6 +4,35 @@ import 'package:portfolio/src/models/projects_model.dart';
 
 final List<ProjectsModel> myProjects = [
   ProjectsModel(
+    title: "ArabVet - البيطري العربي",
+    coverPage: arabVetCoverPage,
+    description: arabVetDescription,
+    techStackList: [
+      'Flutter',
+      'Firebase',
+      'WebRTC',
+      'In-app-purchase',
+      'BLoc',
+      'Provider'
+    ],
+    appStore: 'https://apps.apple.com/us/app/arabvet-%D8%A7%D9%84%D8%A8%D9%8A%D8%B7%D8%B1%D9%8A-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6702022948',
+    isArabicText: true
+  ),
+  ProjectsModel(
+    title: "Hitch - Player Finder",
+    coverPage: hitchPlayerFinderCoverPage,
+    description: hitchDescription,
+    techStackList: [
+      'Flutter',
+      'Firebase',
+      'REST APIs',
+      'In-app-purchase',
+      'BLoc',
+      'Provider'
+    ],
+    appStore: 'https://apps.apple.com/us/app/hitch-player-finder/id6670320911',
+  ),
+  ProjectsModel(
       title: "Markets AI",
       coverPage: marketsAICoverPage,
       description: marketsAIDescription,
@@ -58,7 +87,7 @@ final List<ProjectsModel> myProjects = [
         'Text-to-Speech',
       ],
   ),
-  ProjectsModel(
+ /* ProjectsModel(
     title: "PRINT-ON-DEMAND Custom T-Shirt",
     coverPage: customTeesCoverPage,
     description: customTeesDescription,
@@ -68,5 +97,5 @@ final List<ProjectsModel> myProjects = [
       'Firebase',
       'Design SDK',
     ],
-  ),
+  ),*/
 ];

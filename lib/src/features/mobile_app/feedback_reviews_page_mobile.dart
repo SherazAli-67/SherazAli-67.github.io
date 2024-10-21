@@ -1,6 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:portfolio/src/data/feedback_reviews.dart';
 import 'package:provider/provider.dart';
 import '../../provider/theme_provider.dart';
@@ -23,13 +23,20 @@ class FeedbackAndReviewsPageMobile extends StatelessWidget{
           child: Text("Words of appreciation from those I’ve had the pleasure to work with",textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),
         ),
         const SizedBox(height: 20,),
-        CarouselSlider(
-          options: CarouselOptions(
+        ExpandableCarousel(
+          options: ExpandableCarouselOptions(
             autoPlay: true,
-            aspectRatio: 1.5,
-            viewportFraction: 0.85,
+            showIndicator: false,
+            autoPlayInterval: const Duration(seconds: 5),
+            viewportFraction: 0.9,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
             enlargeCenterPage: true,
             enlargeFactor: 0.3,
+            scrollDirection: Axis.horizontal,
           ),
           items: feedbackReviews.map((feedback) {
             return Card(
@@ -86,6 +93,7 @@ class FeedbackAndReviewsPageMobile extends StatelessWidget{
                 ));
           }).toList(),
         ),
+
       ],
     );
   }

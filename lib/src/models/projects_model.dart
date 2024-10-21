@@ -6,6 +6,7 @@ class ProjectsModel {
   final String? googlePlay;
   final String? appStore;
   final String? gitHub;
+  final bool isArabicText;
 
   ProjectsModel({
     required this.title,
@@ -15,5 +16,6 @@ class ProjectsModel {
     this.googlePlay,
     this.appStore,
     this.gitHub,
+    this.isArabicText = false
   });
 }

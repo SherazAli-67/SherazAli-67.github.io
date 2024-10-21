@@ -42,7 +42,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   cached_network_image: ^3.4.1
   custom_rating_bar: ^3.0.0
-  carousel_slider: ^5.0.0
+#  carousel_slider: ^5.0.0
+  flutter_carousel_widget: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +103,10 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+
+    - family: NotoNaskhArabic
+      fonts:
+        - asset: assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf
 
   #   - family: Trajan Pro
   #     fonts:
