@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:portfolio/src/constants/app_icons.dart';
 import 'package:portfolio/src/models/experience_model.dart';
 import 'package:portfolio/src/themes_styles/style_constant.dart';
@@ -6,7 +7,9 @@ import 'package:portfolio/src/themes_styles/style_constant.dart';
 class Experiences {
   static List<ExperienceModel> getMyExperiences({required Color textSpanColor}){
     return [
-      ExperienceModel(title: "Tobuild LLC", keyResponsibilities: [
+      ExperienceModel(
+          id: 'tobuild',
+          title: "Tobuild LLC", keyResponsibilities: [
         TextSpan(
             children: [
               TextSpan(
@@ -35,7 +38,8 @@ class Experiences {
             ]
         ),
       ], companyIcon: icTobuildLLCIcon, duration: 'May 2024 - Present'),
-      ExperienceModel(title: "Freelancing", keyResponsibilities: [
+      ExperienceModel(
+          id: 'freelancing',title: "Freelancing", keyResponsibilities: [
         TextSpan(
             children: [
               TextSpan(
@@ -116,7 +120,8 @@ class Experiences {
         ),
 
       ], companyIcon: icFreelanceExperienceIcon, duration: 'Nov 2020 - 2024'),
-      ExperienceModel(title: "ZETSOL Technologies", duration: 'November 2021-March 2022', keyResponsibilities: [
+      ExperienceModel(
+          id: 'zetsol',title: "ZETSOL Technologies", duration: 'November 2021-March 2022', keyResponsibilities: [
         TextSpan(
             children: [
               TextSpan(text: "Integrated ", style: regularTextStyleWeb.copyWith(fontFamily: 'Montserrat',  color: textSpanColor)),
@@ -137,5 +142,13 @@ class Experiences {
 
       ], companyIcon: zetsolLogo)
     ];
+  }
+  
+  static void uploadExperienceToFirebase(){
+    CollectionReference colRef = FirebaseFirestore.instance.collection('portfolio').doc('TjkcSBqSAgzokqEJCxKN').collection('experiences');
+    getMyExperiences(textSpanColor: Colors.black).forEach((experience) async {
+
+      await colRef.doc(experience.id).set(experience.toMap());
+    });
   }
 }

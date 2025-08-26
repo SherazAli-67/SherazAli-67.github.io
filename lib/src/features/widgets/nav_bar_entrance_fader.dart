@@ -27,17 +27,11 @@ class NavBarActionButton extends StatelessWidget {
       duration: const Duration(milliseconds: 250),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: InkWell(
-       /*   style: ElevatedButton.styleFrom(
-            elevation: 1,
-            backgroundColor: Colors.transparent,
-          ),*/
           onHover: (val){},
-
           onTap: ()=>  scrollProvider.scroll(index),
           child: Padding(
             padding: const EdgeInsets.all(10),
@@ -48,23 +42,6 @@ class NavBarActionButton extends StatelessWidget {
           ),
         ),
 
-       /* MaterialButton(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99)),
-          splashColor: Colors.white54,
-          highlightColor: Colors.white54,
-
-          hoverColor: Colors.yellow.withOpacity(0.5),
-          onPressed: () {
-            scrollProvider.scroll(index);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              label,
-              style: regularTextStyleWeb,
-            ),
-          ),
-        ),*/
       ),
     );
   }

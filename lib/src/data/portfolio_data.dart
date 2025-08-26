@@ -39,15 +39,35 @@ class PortfolioData {
   static List<TechStackModel> get techStackList {
     return [
       TechStackModel(icon: icFlutter, title: 'Flutter', color: const Color(0xff47C5FB)),
-      TechStackModel(icon: icDart, title: "Dart", color: const Color(0xff01579B)),
-      TechStackModel(icon: icAndroid, title: 'Native Android', color: const Color(0xff84BF41)),
-      TechStackModel(icon: icJava, title: 'Java', color: const Color(0xff5382A1)),
-      TechStackModel(icon: icGitHub, title: 'GitHub', color: Colors.black),
+      // TechStackModel(icon: icDart, title: "Dart", color: const Color(0xff01579B)),
+      // TechStackModel(icon: icAndroid, title: 'Native Android', color: const Color(0xff84BF41)),
+      // TechStackModel(icon: icJava, title: 'Java', color: const Color(0xff5382A1)),
       TechStackModel(icon: icFirebase, title: 'Firebase', color: const Color(0xffFCCA3F)),
       TechStackModel(icon: icMongoDB, title: 'MongoDB', color: const Color(0xff58AA50)),
+      TechStackModel(icon: icGitHub, title: 'GitHub', color: Colors.black),
       TechStackModel(icon: icPostman, title: "Postman", color: const Color(0xffFF6C37)),
-      TechStackModel(icon: icAndroidStudio, title: "Android Studio", color: const Color(0xff4285F4)),
-      TechStackModel(icon: icVisualStudio, title: 'Visual Studio', color: const Color(0xff1F9CF0))
+      // TechStackModel(icon: icAndroidStudio, title: "Android Studio", color: const Color(0xff4285F4)),
+      // TechStackModel(icon: icVisualStudio, title: 'Visual Studio', color: const Color(0xff1F9CF0))
+    ];
+  }
+
+  static List<String> get techStackIcons {
+    return [
+      'assets/icons/flutter.png',
+      'assets/icons/firebase.png',
+      'assets/icons/stripe.png',
+      'assets/icons/ic_google_play.png',
+      'assets/icons/app_store.png'
+    ];
+  }
+
+  static List<String> get howCanIAssistInfo {
+    return [
+      'assets/icons/flutter.png',
+      'assets/icons/firebase.png',
+      'assets/icons/stripe.png',
+      'assets/icons/ic_google_play.png',
+      'assets/icons/app_store.png'
     ];
   }
 }

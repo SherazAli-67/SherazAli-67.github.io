@@ -1,79 +1,123 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../constants/app_icons.dart';
+import 'package:portfolio/src/constants/app_colors.dart';
+import 'package:portfolio/src/utils/utils.dart';
+import 'package:provider/provider.dart';
 import '../../constants/string_constant.dart';
+import '../../provider/portfolio_data_provider.dart';
 import '../../themes_styles/style_constant.dart';
-import '../../utils/utils.dart';
-import '../widgets/primary_btn.dart';
 
 class AboutMeWeb extends StatelessWidget{
-  final Color textSpanColor;
+  // final Color textSpanColor;
   final bool isMobile;
-  const AboutMeWeb({super.key, required this.textSpanColor, this.isMobile= false});
+  final bool isDarkTheme;
+  const AboutMeWeb({super.key, this.isMobile= false, required this.isDarkTheme});
   @override
   Widget build(BuildContext context) {
+    Color bgColor = isDarkTheme ? Colors.white : Colors.black;
+    Color textSpanColor = isDarkTheme ? Colors.white : Colors.black;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        ElevatedButton(onPressed: (){}, child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 10,
+          children: [
+            const CircleAvatar(
+              backgroundColor: AppColors.primaryColor,
+              radius: 5,
+            ),
+            Text("Available for work", style: regularTextStyleWeb.copyWith(color: AppColors.primaryColor, fontFamily: fontFamilyMontserrat),)
+          ],
+        )),
+
         Row(
           children: [
             Expanded(
-                flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Hi, I am ", style: TextStyle(fontSize: 24),),
-                    Text(title, style: TextStyle(fontSize: 50, fontFamily: 'Poppins', color: textSpanColor, fontWeight: FontWeight.w700),),
-                    AnimatedTextKit(animatedTexts: [
-                      TyperAnimatedText('Mobile App Developer', textStyle: const TextStyle(fontFamily: 'Montserrat', fontSize: 16)),
-                      TyperAnimatedText('Cross Platform Development', textStyle: const TextStyle(fontFamily: 'Montserrat', fontSize: 16)),
-                      TyperAnimatedText('Native Android App Development', textStyle: const TextStyle(fontFamily: 'Montserrat', fontSize: 16)),
-                    ]),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildIconPressButton(icLinkToGithub, ()=> Utils.portfolioLaunchUrl(myGitHubLink)),
-                        _buildIconPressButton(icLinkToTwitter, ()=> Utils.portfolioLaunchUrl(myTwitterLink)),
-                        _buildIconPressButton(icLinkToLinkedIn,()=> Utils.portfolioLaunchUrl(myLinkedInLink)),
-                      ],
-                    )
-                    /*const SizedBox(height: 40,),
-                          const Text(shortDescription, style: TextStyle(fontSize: 16, fontFamily: 'Montserrat'),),*/
+                    Text("Hi, I'm a ", style: TextStyle(fontSize: 50, fontFamily: fontFamilyMontserrat, color: textSpanColor, fontWeight: FontWeight.w700),),
+                    Text('Mobile App Developer', style: TextStyle(fontSize: 50, fontFamily: 'Poppins', color: textSpanColor, fontWeight: FontWeight.w700),),
+                    Consumer<PortfolioDataProvider>(
+                      builder: (context, portfolioProvider, child) {
+                        String aboutMeText = aboutMe; // fallback
+
+                        if (portfolioProvider.portfolioState == LoadingState.success &&
+                            portfolioProvider.portfolioData != null) {
+                          final data = portfolioProvider.portfolioData!;
+                          aboutMeText = data.shortDescription.isNotEmpty ? data.shortDescription : aboutMe;
+                        }
+
+                        if (portfolioProvider.portfolioState == LoadingState.loading) {
+                          return const Padding(
+                            padding: EdgeInsets.only(right: 100.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 20),
+                                CircularProgressIndicator(),
+                                SizedBox(height: 20),
+                                Text("Loading about me content...", style: TextStyle(fontFamily: 'Montserrat')),
+                              ],
+                            ),
+                          );
+                        }
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 100,),
+                              child: Text(
+                                aboutMeText,
+                                textAlign: isMobile ? TextAlign.start : TextAlign.justify,
+                                style: regularTextStyleWeb.copyWith(height: 1.5),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+
+
+                    const SizedBox(height: 20,),
+                    Consumer<PortfolioDataProvider>(
+                      builder: (context, portfolioProvider, child) {
+                        String resumeLink = myResumeLink; // fallback
+
+                        if (portfolioProvider.portfolioState == LoadingState.success &&
+                            portfolioProvider.portfolioData != null) {
+                          final data = portfolioProvider.portfolioData!;
+                          resumeLink = data.resumeLink.isNotEmpty ? data.resumeLink : myResumeLink;
+                        }
+
+                        if (portfolioProvider.portfolioState == LoadingState.loading) {
+                          return const SizedBox();
+                        }
+
+                        return Row(
+                          spacing: 20,
+                          children: [
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor
+                                ),
+                                onPressed: (){}, child: Text("Contact Me", style: regularTextStyleWeb.copyWith(color: Colors.white, fontFamily: fontFamilyMontserrat, fontWeight: FontWeight.w600),)),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: bgColor
+                                ),
+                                onPressed: ()=> Utils.portfolioLaunchUrl(resumeLink), child: Text("View Resume", style: regularTextStyleWeb.copyWith(color: isDarkTheme ? Colors.black : Colors.white, fontFamily: fontFamilyMontserrat, fontWeight: FontWeight.w600),)),
+                          ],
+                        );
+                      },
+                    ),
                   ],
                 )),
           ],
         ),
-        const SizedBox(height: 40,),
-        SizedBox(
-          height: 45,
-          child: Row(
-            children: [
-              PrimaryBtn(btnText: "Hire me", onTap: (){
-                Utils.launchEmail();
-              }),
-              const SizedBox(width: 10,),
-              ElevatedButton(onPressed: (){
-                Utils.portfolioLaunchUrl(myResumeLink);
-              }, child:  Text("My RESUME", style: regularTextStyleWeb.copyWith(color: textSpanColor, fontFamily: 'Montserrat', fontWeight: FontWeight.w700)),)
-            ],
-          ),
-        ),
-        const SizedBox(height: 20,),
-        const Text("About me",style:  headingStyleWeb,),
-        const SizedBox(height: 10,),
-        Padding(
-          padding: const EdgeInsets.only(right: 100,),
-          child: Text(aboutMe, textAlign: isMobile ? TextAlign.start : TextAlign.justify, style: regularTextStyleWeb.copyWith(height: 1.5),),
-        ),
+
       ],
     );
   }
-
-  Widget _buildIconPressButton(String icon, VoidCallback onTap) => Padding(
-    padding: const EdgeInsets.only(top: 20.0, right: 20),
-    child: InkWell(onTap: onTap, child: SvgPicture.asset(icon, color: Colors.grey, height: 35,)),
-  );
 }

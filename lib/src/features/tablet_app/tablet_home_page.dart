@@ -21,7 +21,7 @@ class TabletHomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     bool isDarkTheme = Provider.of<ThemeProvider>(context).themeData == darkTheme;
-    Color textSpanColor = isDarkTheme ? Colors.white : Colors.black;
+
     final scrollProvider = Provider.of<ScrollProvider>(context);
 
     return ListView(
@@ -35,7 +35,7 @@ class TabletHomePage extends StatelessWidget{
               HeaderMobile(openDrawer: openDrawer,),
               const SizedBox(height: 20,),
 
-              AboutMeWeb(textSpanColor: textSpanColor),
+              AboutMeWeb(isDarkTheme: isDarkTheme),
               const SizedBox(height: 20,),
 
               const Row(children: [

@@ -1,5 +1,9 @@
 const logoText = 'SZ';
 const title = 'Sheraz Ali';
+const fontFamilyMontserrat ='Montserrat';
+const fontFamilyPoppins ='Montserrat';
+const fontFamilyNotoNaskh ='NotoNaskhArabic';
+
 const shortDescription = 'Flutter App Developer – I Design and Develop Mobile Apps to Elevate Your Business – Book a Free Consultation Today';
 const aboutMe = '''I am a self-taught mobile app developer with over 3 years of experience, specializing in Flutter and Native Android App Development. My portfolio spans various industries, including AI-powered applications utilizing ChatGPT and real-time Text-to-Speech APIs, E-commerce platforms, Language Translation tools, Chat and Video Communication apps, Stock Market applications with integrated AI Chatbots, and apps for reading and listening to book summaries. I have successfully delivered projects to clients worldwide and have a passion for learning new technologies, continually exploring new trends and innovations in the tech space. ''';
 const aboutMeMobileDescription = '''Self-taught mobile app developer with 3+ years of experience, specializing in Flutter and Native Android. I’ve worked across various industries, including AI apps with ChatGPT and Text-to-Speech, E-commerce, Translation, Communication, Stock Market, and book summary apps. Passionate about learning and exploring new technologies.''';

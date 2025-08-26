@@ -4,6 +4,7 @@ import 'package:portfolio/src/models/projects_model.dart';
 
 final List<ProjectsModel> myProjects = [
   ProjectsModel(
+    id: 'arabvet',
     title: "ArabVet - البيطري العربي",
     coverPage: arabVetCoverPage,
     description: arabVetDescription,
@@ -19,6 +20,7 @@ final List<ProjectsModel> myProjects = [
     isArabicText: true
   ),
   ProjectsModel(
+    id: 'hitch',
     title: "Hitch - Player Finder",
     coverPage: hitchPlayerFinderCoverPage,
     description: hitchDescription,
@@ -33,6 +35,7 @@ final List<ProjectsModel> myProjects = [
     appStore: 'https://apps.apple.com/us/app/hitch-player-finder/id6670320911',
   ),
   ProjectsModel(
+    id: 'marketsAI',
       title: "Markets AI",
       coverPage: marketsAICoverPage,
       description: marketsAIDescription,
@@ -47,6 +50,7 @@ final List<ProjectsModel> myProjects = [
       appStore: 'https://apps.apple.com/us/app/markets-ai/id6479254392',
       ),
   ProjectsModel(
+    id: 'happyLife',
       title: "HappyLife: Book Summaries",
       coverPage: happyLifeCoverPage,
       description: happyLifeDescription,
@@ -62,6 +66,7 @@ final List<ProjectsModel> myProjects = [
       googlePlay: 'https://play.google.com/store/apps/details?id=com.jesperquest.happy_life_booksummaryapp'
   ),
   ProjectsModel(
+    id: 'konushkan',
     title: "Konushan - Language Exchange",
     coverPage: konushanCoverPage,
     description: konushanDescription,
@@ -76,6 +81,7 @@ final List<ProjectsModel> myProjects = [
     googlePlay: 'https://play.google.com/store/apps/details?id=com.aithings.konushan'
   ),
   ProjectsModel(
+    id: 'civil-procedure',
       title: "Code of CIVIL PROCEDURE",
       coverPage: codeOfCivilProcedureCoverPage,
       description: codeOfCivilProcedureDescription,
