@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/constants/app_icons.dart';
+import 'package:portfolio/src/models/services_model.dart';
 import 'package:portfolio/src/models/tech_stack_model.dart';
 
 class PortfolioData {
@@ -61,13 +62,13 @@ class PortfolioData {
     ];
   }
 
-  static List<String> get howCanIAssistInfo {
+  static List<ServicesIOffer> get howCanIAssistInfo {
     return [
-      'assets/icons/flutter.png',
-      'assets/icons/firebase.png',
-      'assets/icons/stripe.png',
-      'assets/icons/ic_google_play.png',
-      'assets/icons/app_store.png'
+     ServicesIOffer(id: '1', title: 'Mobile App Development', iconUrl: icFlutter, description: 'I build reliable, cross-platform apps with Flutter, ensuring smooth performance, scalability, and beautiful design across iOS and Android.'),
+      ServicesIOffer(id: '2', title: 'Custom Feature Integration', iconUrl: icFirebase, description: 'From AI chatbots to payment systems and real-time communication, I integrate advanced features tailored to your business needs.'),
+      ServicesIOffer(id: '3', title: 'App Maintenance & Scaling', iconUrl: icGitHub, description: 'I provide ongoing support, updates, and scaling solutions to keep your app fast, secure, and aligned with user growth.'),
+      ServicesIOffer(id: '4', title: 'Consultation & MVP Development', iconUrl: icPostman, description: 'I help startups turn ideas into working MVPs, validating concepts quickly with cost-effective mobile solutions.'),
+
     ];
   }
 }

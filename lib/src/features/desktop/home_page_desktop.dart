@@ -8,6 +8,7 @@ import 'package:portfolio/src/features/desktop/experience_page.dart';
 import 'package:portfolio/src/features/desktop/about_me_web.dart';
 import 'package:portfolio/src/features/desktop/projects_page_web.dart';
 import 'package:portfolio/src/features/desktop/tech_stack_web.dart';
+import 'package:portfolio/src/models/services_model.dart';
 import 'package:portfolio/src/provider/theme_provider.dart';
 import 'package:portfolio/src/provider/portfolio_data_provider.dart';
 import 'package:portfolio/src/themes_styles/style_constant.dart';
@@ -64,8 +65,8 @@ class _HomePageWebState extends State<HomePageWeb> {
                   // _buildExperienceSection(portfolioProvider),
 
                   _buildMyMissionWidget(portfolioProvider),
-                  _buildHowCanIAssistWidget(portfolioProvider),
-                  const TechStackWebTablet(childAspectRatio: childAspectRatioWeb,),
+                  _buildHowCanIAssistWidget(portfolioProvider, isDarkTheme),
+                  // const TechStackWebTablet(childAspectRatio: childAspectRatioWeb,),
 
                   const ProjectsPageWeb(),
 
@@ -117,7 +118,7 @@ class _HomePageWebState extends State<HomePageWeb> {
     );
   }
 
-  Widget _buildHowCanIAssistWidget(PortfolioDataProvider provider){
+  Widget _buildHowCanIAssistWidget(PortfolioDataProvider provider, bool isDarkTheme){
     String missionText = ""; // Default fallback
 
     if (provider.portfolioState == LoadingState.success && provider.portfolioData != null) {
@@ -126,54 +127,62 @@ class _HomePageWebState extends State<HomePageWeb> {
       missionText = "...";
     }
 
+    Color textIconColor = isDarkTheme ? Colors.white : Colors.black;
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 20,
       children: [
         const Text("How Can I Assist You?", style: headingStyleWeb,),
        Expanded(
-         child: Row(
+         child: Column(
+           spacing: 20,
            children: [
-             Expanded(child: Card(
-                 child: Column(
-                   spacing: 20,
-                   children: [
-                     Row(
-                       spacing: 20,
-                       children: [
-                         SvgPicture.asset(icSkills),
-                         Text('Our team builds reliable scalabale solutions delivers clean code that powers mobile apps with top notch performance and security', style: regularTextStyleWeb,),
-                       ],
-                     ),
-                     Row(
-                       children: [
-                         Text("Development", style: subHeadingStyleWeb,),
-                         Text('01')
-                       ],
-                     )
-                   ],)
-             ),),
-             Expanded(child: Card(
-                 child: Column(
-                   spacing: 20,
-                   children: [
-                     Row(
-                       spacing: 20,
-                       children: [
-                         SvgPicture.asset(icSkills),
-                         Text('Our team builds reliable scalabale solutions delivers clean code that powers mobile apps with top notch performance and security', style: regularTextStyleWeb,),
-                       ],
-                     ),
-                     Row(
-                       children: [
-                         Text("Development", style: subHeadingStyleWeb,),
-                         Text('01')
-                       ],
-                     )
-                   ],)
-             ),)
+             Row(
+               spacing: 20,
+               children: [
+                 Expanded(child: _buildAssistWidget(service: PortfolioData.howCanIAssistInfo[0], textIconColor: textIconColor, index: 1),),
+                 Expanded(child: _buildAssistWidget(service: PortfolioData.howCanIAssistInfo[1], textIconColor: textIconColor, index: 2),)
+               ],
+             ),
+             Row(
+               spacing: 20,
+               children: [
+                 Expanded(child: _buildAssistWidget(service: PortfolioData.howCanIAssistInfo[2], textIconColor: textIconColor, index: 2),),
+                 Expanded(child: _buildAssistWidget(service: PortfolioData.howCanIAssistInfo[3], textIconColor: textIconColor, index: 3),)
+               ],
+             ),
            ],
          ),
        )
       ],
     );
+  }
+
+  Card _buildAssistWidget({required ServicesIOffer service, required int index,  required Color textIconColor}) {
+    return Card(
+               child: Padding(
+                 padding: const EdgeInsets.all(25.0),
+                 child: Column(
+                   spacing: 20,
+                   children: [
+                     Row(
+                       spacing: 20,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         SvgPicture.asset(service.iconUrl, height: 45, ),
+                         Expanded(child: Text(service.description, style: regularTextStyleWeb,)),
+                       ],
+                     ),
+                     Row(
+                       spacing: 10,
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                         Text(service.title, style: subHeadingStyleWeb,),
+                         Text('0$index', style: subHeadingStyleWeb,)
+                       ],
+                     )
+                   ],),
+               )
+           );
   }
 }

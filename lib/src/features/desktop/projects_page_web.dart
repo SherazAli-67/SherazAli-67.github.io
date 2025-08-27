@@ -22,7 +22,7 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
   Widget build(BuildContext context) {
     bool isDarkTheme = Provider.of<ThemeProvider>(context).themeData == darkTheme;
     Color cardColor = isDarkTheme ? Colors.black : Colors.white;
-    
+    Size size = MediaQuery.of(context).size;
     return Consumer<PortfolioDataProvider>(
       builder: (context, portfolioProvider, child) {
         // Initialize data loading if not started
@@ -31,8 +31,37 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
             portfolioProvider.loadProjects();
           });
         }
+        if(portfolioProvider.projectsState == LoadingState.success){
+          final projects = portfolioProvider.projects;
+          if (projects.isEmpty) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(50.0),
+                child: Text(
+                  'No projects found',
+                  style: TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
+                ),
+              ),
+            );
+          }
 
-        return Column(
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Selected Work", style: headingStyleWeb),
+                  const SizedBox(height: 20),
+                  _buildProjectsLayout(projects, cardColor),
+                ],
+              ),
+            ),
+          );
+        }
+
+        return const SizedBox();
+        /*return Column(
           children: [
             // Header section
             const Center(
@@ -48,8 +77,80 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
             // Content based on loading state
             _buildProjectsContent(portfolioProvider, cardColor),
           ],
-        );
+        );*/
       },
+    );
+  }
+
+  Widget _buildProjectsLayout(List<ProjectsModel> projects, Color cardColor) {
+    if (projects.isEmpty) return const SizedBox.shrink();
+
+    List<Widget> layoutChildren = [];
+
+    // First project - full width
+    if (projects.isNotEmpty) {
+      layoutChildren.add(
+        ProjectItemWidgetWeb(
+          project: projects[0],
+          cardBgColor: cardColor,
+        ),
+      );
+      layoutChildren.add(const SizedBox(height: 20));
+    }
+
+    // Remaining projects - two per row
+    if (projects.length > 1) {
+      final remainingProjects = projects.sublist(1);
+      
+      for (int i = 0; i < remainingProjects.length; i += 2) {
+        List<Widget> rowChildren = [];
+        
+        // First project in the row
+        rowChildren.add(
+          Expanded(
+            child: ProjectItemWidgetWeb(
+              project: remainingProjects[i],
+              cardBgColor: cardColor,
+            ),
+          ),
+        );
+
+        // Second project in the row (if exists)
+        if (i + 1 < remainingProjects.length) {
+          rowChildren.add(const SizedBox(width: 20));
+          rowChildren.add(
+            Expanded(
+              child: ProjectItemWidgetWeb(
+                project: remainingProjects[i + 1],
+                cardBgColor: cardColor,
+              ),
+            ),
+          );
+        } else {
+          // If odd number of remaining projects, add empty space
+          rowChildren.add(const SizedBox(width: 20));
+          rowChildren.add(const Expanded(child: SizedBox()));
+        }
+
+        layoutChildren.add(
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: rowChildren,
+            ),
+          ),
+        );
+
+        // Add spacing between rows (except for the last row)
+        if (i + 2 < remainingProjects.length) {
+          layoutChildren.add(const SizedBox(height: 20));
+        }
+      }
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: layoutChildren,
     );
   }
 
