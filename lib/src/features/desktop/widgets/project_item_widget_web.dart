@@ -23,17 +23,22 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
   bool isHovered = false;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: double.infinity,
+      height: size.height*0.7,
       child: Card(
         color: widget.cardBgColor,
+        margin: EdgeInsets.symmetric(vertical: 10),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Row(
+          child:
+
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(child: buildProjectCover()),
-              const SizedBox(width: 10,),
+              Expanded(child: buildProjectCover(size)),
+              /*const SizedBox(width: 10,),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +73,7 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
                     }, icon: SvgPicture.asset(icOpenLink,))
                   ],
                 ),
-              )
+              )*/
             ],
           ),
         ),
@@ -76,25 +81,21 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
     );
   }
 
-  Widget buildProjectCover() {
+  Widget buildProjectCover(Size size) {
     return MouseRegion(
       onEnter: (event) {
-        setState(() {
-          isHovered = true;
-        });
+        setState(() => isHovered = true);
       },
       onExit: (event) {
-        setState(() {
-          isHovered = false;
-        });
+        setState(() => isHovered = true);
       },
       child: Column(
         // alignment: Alignment.bottomCenter,
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(widget.project.coverPage, fit: BoxFit.cover,)),
-          AnimatedOpacity(
+              child: Image.asset('assets/projects/arabvet_update.png', fit: BoxFit.cover, height: size.height*0.5,)),
+         /* AnimatedOpacity(
               opacity: isHovered
                   ? 1
                   : 0, // opacity(brightness of color) on hover icon text
@@ -116,7 +117,7 @@ class _ProjectItemWidgetWebState extends State<ProjectItemWidgetWeb> {
                   ],
                 ),
               ),
-          ),
+          ),*/
         ],
       ),
     );

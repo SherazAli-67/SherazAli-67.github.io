@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/data/my_projects.dart';
+import 'package:portfolio/src/data/portfolio_data.dart';
 import 'package:portfolio/src/features/desktop/widgets/project_item_widget_web.dart';
 import 'package:portfolio/src/models/projects_model.dart';
 import 'package:portfolio/src/provider/portfolio_data_provider.dart';
@@ -22,7 +24,7 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
   Widget build(BuildContext context) {
     bool isDarkTheme = Provider.of<ThemeProvider>(context).themeData == darkTheme;
     Color cardColor = isDarkTheme ? Colors.black : Colors.white;
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Consumer<PortfolioDataProvider>(
       builder: (context, portfolioProvider, child) {
         // Initialize data loading if not started
@@ -32,7 +34,7 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
           });
         }
         if(portfolioProvider.projectsState == LoadingState.success){
-          final projects = portfolioProvider.projects;
+          final projects = myProjects;
           if (projects.isEmpty) {
             return const Center(
               child: Padding(
@@ -48,12 +50,13 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
           return Card(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 20,
                 children: [
-                  Text("Selected Work", style: headingStyleWeb),
-                  const SizedBox(height: 20),
-                  _buildProjectsLayout(projects, cardColor),
+                  const Expanded(child:  Text("Selected Work", style: headingStyleWeb)),
+                  Expanded(
+                      child: _buildProjectsLayout(projects, cardColor)),
                 ],
               ),
             ),
@@ -101,10 +104,10 @@ class ProjectsPageWebState extends State<ProjectsPageWeb> with TickerProviderSta
     // Remaining projects - two per row
     if (projects.length > 1) {
       final remainingProjects = projects.sublist(1);
-      
+
       for (int i = 0; i < remainingProjects.length; i += 2) {
         List<Widget> rowChildren = [];
-        
+
         // First project in the row
         rowChildren.add(
           Expanded(
